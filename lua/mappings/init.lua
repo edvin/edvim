@@ -12,7 +12,7 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
 
 -- Close buffer
-vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = "Close current buffer" })
+vim.keymap.set('n', '<leader>x', ':bd<CR>:bprev<CR>', { desc = "Close current buffer" })
 
 -- Cycle through buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = "Next buffer" })
