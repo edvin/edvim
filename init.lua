@@ -97,6 +97,19 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Update EdVim
+local update_edvim = function()
+  local on_exit = function(obj)
+    vim.schedule(function()
+      vim.notify(obj.stdout, vim.log.levels.INFO, { title = "EdVim" })
+    end)
+  end
+
+  vim.system({ "git", "pull" }, { cwd = vim.fn.stdpath "config" }, on_exit)
+end
+
+vim.api.nvim_create_user_command('UpdateEdVim', update_edvim, {})
+
 -- Load plugins
 require("lazy").setup({
   defaults = { lazy = false },
