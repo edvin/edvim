@@ -1,0 +1,18 @@
+{
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/home/es/.config/nvim",
+        "/home/es/.local/share/nvim/lazy/lazy.nvim",
+        "/home/es/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/es/.local/share/nvim/lazy/feline.nvim",
+        "/home/es/.local/share/nvim/lazy/mason-nvim-dap.nvim",
+        "/home/es/.local/share/nvim/lazy/nvim-dap-go",
+        "/home/es/.local/share/nvim/lazy/mason.nvim",
+        "/home/es/.local/share/nvim/lazy/nvim-dap",
+        "/home/es/.local/share/nvim/lazy/catppuccin",
+        "/usr/share/nvim/runtime",
+        "/home/es/.local/state/nvim/lazy/readme",
+        "/home/es/.local/share/nvim/lazy/catppuccin/after",
+        "${3rd}/luassert/library"
+    ]
+}
