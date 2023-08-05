@@ -6,7 +6,7 @@ return {
         require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
       end
 
-      vim.g.db_ui_save_location = (os.getenv "XDG_DATA_HOME" or vim.fn.expand "$HOME/.local/share") .. "db_ui"
+      vim.g.db_ui_save_location = (os.getenv "XDG_DATA_HOME" or vim.fn.expand "$HOME/.local/share") .. "/db_ui"
       vim.g.db_ui_use_nerd_fonts = 1
       vim.g.db_ui_execute_on_save = 0
 
