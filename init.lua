@@ -76,10 +76,12 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end
 })
 
--- Autoformat on save
+-- Autoformat on save if LSP is available for the buffer
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function()
-    vim.lsp.buf.format { async = false }
+    if #vim.lsp.get_active_clients() > 0 then
+      vim.lsp.buf.format { async = false }
+    end
   end
 })
 
