@@ -8,10 +8,11 @@ return {
     "feline-nvim/feline.nvim",
     dependencies = { "lewis6991/gitsigns.nvim" },
     config = function()
-      local ctp_feline = require('catppuccin.groups.integrations.feline')
+      local ctp_feline = require('plugins.configs.feline')
       ctp_feline.setup({})
+
       require("feline").setup({
-        components = ctp_feline.get(),
+        components = ctp_feline.get()
       })
     end
   },
