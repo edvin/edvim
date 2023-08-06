@@ -387,19 +387,27 @@ function M.get()
     right_sep = invi_sep,
   }
 
+  local filetype_by_lspname = {
+    lua_ls = "lua",
+    gopls = "go",
+  }
+
   -- Show names of LSP clients attached to the current buffer
   components.active[3][2] = {
     provider = function()
       local clients = {}
+      local has_icons, icons = pcall(require, "nvim-web-devicons")
+
       for _, client in ipairs(vim.lsp.buf_get_clients()) do
-        table.insert(clients, client.name)
+        local desc = has_icons and icons.get_icon_by_filetype(filetype_by_lspname[client.name]) or client.name
+        table.insert(clients, desc)
       end
 
       if #clients == 0 then
         return ""
       end
 
-      return assets.lsp.server .. " " .. table.concat(clients, " ")
+      return table.concat(clients, " ")
     end,
     hl = {
       fg = sett.extras,
@@ -433,7 +441,7 @@ function M.get()
   components.active[3][4] = {
     provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return " " .. assets.dir .. " " .. dir_name .. " "
+      return " " .. assets.dir .. " " .. dir_name .. "  "
     end,
     enabled = is_enabled(80),
     hl = {
