@@ -68,7 +68,7 @@ return {
   {
     "rcarriga/nvim-notify",
   },
-  {
+  --[[ {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -95,5 +95,5 @@ return {
         },
       })
     end
-  },
+  }, ]]
 }
