@@ -37,7 +37,7 @@ return {
           map('n', '<leader>hR', gs.reset_buffer, { desc = "Reset buffer" })
           map('n', '<leader>hp', gs.preview_hunk, { desc = "Preview hunk" })
           map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = "Blame line full" })
-          map('n', '<leader>hl', gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
+          map('n', '<leader>hl', gs.toggle_current_line_blame, { desc = "Blame line inline" })
           map('n', '<leader>hd', gs.diffthis, { desc = "Diff this" })
           map('n', '<leader>hD', function() gs.diffthis('~') end, { desc = "Diff this D" })
           map('n', '<leader>td', gs.toggle_deleted, { desc = "Git Toggle deleted" })
