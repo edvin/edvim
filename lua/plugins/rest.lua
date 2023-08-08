@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   ft = { "http" },
   keys = {
-    { "<leader>ht", "<Plug>RestNvim", desc = "Execute HTTP Request", silent = true },
+    { "<leader>re", "<Plug>RestNvim", desc = "Execute HTTP Request", silent = true },
   },
   config = function()
     require('rest-nvim').setup({

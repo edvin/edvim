@@ -25,22 +25,39 @@ return {
 
       -- Completion keymaps:
       --
-      -- <Ctrl-K> for expanding,
-      -- <Ctrl-L> for jumping forward
-      -- <Ctrl-J> for jumping backward
-      -- <Ctrl-E> for changing the active choice
+      -- <Ctrl-k> for expanding,
+      -- <Ctrl-n> for jumping forward
+      -- <Ctrl-p> for jumping backward
+      -- <Ctrl-e> for changing the active choice
       --
       local ls = require('luasnip')
 
-      vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
-      vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-      vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+      vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-n>", function() ls.jump(1) end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-p>", function() ls.jump(-1) end, { silent = true })
 
-      vim.keymap.set({ "i", "s" }, "<C-E>", function()
+      vim.keymap.set({ "i", "s" }, "<C-e>", function()
         if ls.choice_active() then
           ls.change_choice(1)
         end
       end, { silent = true })
+
+      local types = require("luasnip.util.types")
+
+      ls.config.setup({
+        ext_opts = {
+          [types.choiceNode] = {
+            active = {
+              virt_text = { { "●", "GruvboxOrange" } }
+            }
+          },
+          [types.insertNode] = {
+            active = {
+              virt_text = { { "●", "GruvboxBlue" } }
+            }
+          }
+        },
+      })
     end
   },
   {
@@ -87,49 +104,23 @@ return {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
-        mapping = {
+        mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
+            -- behavior = cmp.ConfirmBehavior.Insert,
             select = true
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          --   ['<Tab>'] = function(fallback)
-          --     if is_blank_line() then
-          --       fallback()
-          --     elseif vim.fn.pumvisible() == 1 then
-          --       vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-          --     elseif luasnip.expand_or_jumpable() then
-          --       vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-          --     elseif not check_backspace() then
-          --       cmp.mapping.complete()(fallback)
-          --     else
-          --       fallback()
-          --     end
-          --   end,
-          --   ['<S-Tab>'] = function(fallback)
-          --     if vim.fn.pumvisible() == 1 then
-          --       vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-          --     elseif luasnip.jumpable(-1) then
-          --       vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-          --     else
-          --       fallback()
-          --     end
-          --   end,
-        },
+          })
+        }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'vim-dadbod-completion' },
-        }, {
-          { name = 'buffer' },
         })
       })
 
