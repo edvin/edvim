@@ -32,7 +32,7 @@ return {
       --
       local ls = require('luasnip')
 
-      vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
+      vim.keymap.set({ "i" }, "<C-y>", function() ls.expand() end, { silent = true })
       vim.keymap.set({ "i", "s" }, "<C-n>", function() ls.jump(1) end, { silent = true })
       vim.keymap.set({ "i", "s" }, "<C-p>", function() ls.jump(-1) end, { silent = true })
 
@@ -46,11 +46,13 @@ return {
 
       ls.config.setup({
         ext_opts = {
+          -- Visualize choice node with orange dot
           [types.choiceNode] = {
             active = {
               virt_text = { { "●", "GruvboxOrange" } }
             }
           },
+          -- Visualize insert node with blue dot
           [types.insertNode] = {
             active = {
               virt_text = { { "●", "GruvboxBlue" } }
@@ -80,15 +82,6 @@ return {
       local lspkind = require('lspkind')
       local cmp = require 'cmp'
 
-      local check_backspace = function()
-        local col = vim.fn.col(".") - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
-      end
-
-      local is_blank_line = function()
-        return vim.api.nvim_get_current_line():match("^%s*"):len() == 0
-      end
-
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -106,7 +99,7 @@ return {
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -123,7 +116,6 @@ return {
           { name = 'vim-dadbod-completion' },
         })
       })
-
       -- Set configuration for specific filetype.
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
