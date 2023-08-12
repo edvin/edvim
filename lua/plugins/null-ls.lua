@@ -51,7 +51,7 @@ return {
     },
     config = function()
       require("mason-null-ls").setup({
-        ensure_installed = { "stylua", "prettierd" }
+        ensure_installed = { "stylua", "prettierd", "goimports-reviser" }
       })
     end,
   },
