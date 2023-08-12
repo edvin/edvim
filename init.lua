@@ -64,18 +64,6 @@ vim.diagnostic.config {
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
--- opt.whichwrap:append "<>[]hl"
-
--- Organize imports on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.go',
-  callback = function()
-    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-  end
-})
-
 -- Autoformat on save if LSP is available for the buffer
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function()
