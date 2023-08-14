@@ -6,4 +6,4 @@ vim.keymap.set('n', '<F8>', ':lua require("dap").step_into()<CR>', { desc = "Ste
 vim.keymap.set('n', '<S-F8>', ':lua require("dap").step_out()<CR>', { desc = "Step out", silent = true })
 vim.keymap.set('n', '<C-F8>', ':lua require("dap").toggle_breakpoint()<CR>',
   { desc = "Toggle breakpoint", silent = true })
-vim.keymap.set('n', '<F11>', ':lua require("dapui").toggle()<CR>', { desc = "Toggle debugger UI", silent = true })
+vim.keymap.set('n', '<F12>', ':lua require("dapui").toggle()<CR>', { desc = "Toggle debugger UI", silent = true })
