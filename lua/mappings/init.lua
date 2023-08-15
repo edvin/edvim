@@ -3,10 +3,10 @@ require("mappings/lspconfig")
 require("mappings/dap")
 
 -- Arrow keys resizes windows
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = "Resize window right" })
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { desc = "Resize window down", silent = true })
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { desc = "Resize window up", silent = true })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = "Resize window right", silent = true })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = "Resize window left", silent = true })
 
 -- Open nvim tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
