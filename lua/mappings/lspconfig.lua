@@ -31,7 +31,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, { buffer = ev.buf, desc = "List workspace folders" })
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Type definition" })
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code action" })
+    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code action" })
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', function()
+      require('code_action_menu').open_code_action_menu()
+    end, { buffer = ev.buf, desc = "Code action" })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
     vim.keymap.set('n', '<space>cf', function()
       vim.lsp.buf.format { async = true }

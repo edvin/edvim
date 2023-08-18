@@ -1,5 +1,13 @@
 return {
   {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      require("nvim-lightbulb").setup({
+        autocmd = { enabled = true }
+      })
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require "lspconfig"
