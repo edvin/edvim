@@ -17,3 +17,4 @@ git clone https://github.com/edvin/edvim ~/.config/nvim
 - postgresql
 - ripgrep
 - unzip
+- fzf
