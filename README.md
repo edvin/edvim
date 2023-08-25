@@ -10,6 +10,7 @@ git clone https://github.com/edvin/edvim ~/.config/nvim
 
 ## Prerequisites
 
+- neovim nightly
 - lazygit
 - npm
 - go
