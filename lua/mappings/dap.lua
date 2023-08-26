@@ -9,3 +9,5 @@ vim.keymap.set('n', '<F5>', ':lua require("dap").toggle_breakpoint()<CR>',
 vim.keymap.set('n', '<F12>', ':lua require("dapui").toggle()<CR>', { desc = "Toggle debugger UI", silent = true })
 vim.keymap.set('n', '<leader>dt', ':lua require("dap-go").debug_test()<CR>',
   { desc = "Debug test under cursor", silent = true })
+vim.keymap.set('n', '<leader>dh', ':lua require("dapui").eval()<CR>',
+  { desc = "Show current variable while debugging", silent = true })

@@ -19,12 +19,12 @@ return {
       }
     end
   },
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    config = function()
-      require("nvim-dap-virtual-text").setup()
-    end
-  },
+  -- {
+  --   'theHamsta/nvim-dap-virtual-text',
+  --   config = function()
+  --     require("nvim-dap-virtual-text").setup()
+  --   end
+  -- },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
