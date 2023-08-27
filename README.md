@@ -18,3 +18,4 @@ git clone https://github.com/edvin/edvim ~/.config/nvim
 - ripgrep
 - unzip
 - fzf
+- prettierd
